@@ -59,8 +59,8 @@ final class SampleTest extends TestCase
         ));
 
         $process->start();
-        $output = '';
 
+        $output = '';
         while ($process->isRunning()) {
             $output .= $process->getOutput();
             if (false !== strpos($output, 'socket server mock: started')) {
