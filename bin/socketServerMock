@@ -1,0 +1,77 @@
+#!/usr/bin/env php
+<?php
+
+use Chubbyphp\SocketServerMock\Message;
+use Chubbyphp\SocketServerMock\MessageLog;
+use Chubbyphp\SocketServerMock\MessageLogs;
+use Chubbyphp\SocketServerMock\SocketServerMock;
+use Chubbyphp\SocketServerMock\Stream\ServerFactory;
+
+$host = getArgument($argv, 1, 'Missing host', 1);
+$port = getArgument($argv, 2, 'Missing port', 2);
+$messageLogsJson = getArgument($argv, 3, 'Missing message logs', 3);
+
+if ((string) $port !== (string) (int) $port) {
+    error(sprintf('Port "%s" is not an integer', $port), 4);
+}
+
+autoload();
+
+try {
+    $socketServerMock = new SocketServerMock(new ServerFactory());
+    $socketServerMock->run($host, (int) $port, MessageLogs::createFromArray(jsonToArray($messageLogsJson)));
+} catch (\Throwable $e) {
+    error($e->getMessage(), $e->getCode());
+}
+
+function autoload()
+{
+    // path as installed package
+    if (file_exists(__DIR__ . '/../../../autoload.php')) {
+        require __DIR__ . '/../../../autoload.php';
+    } else {
+        require __DIR__ . '/../vendor/autoload.php';
+    }
+}
+
+/**
+ * @param integer $index
+ * @param string $error
+ * @param int $code
+ * @return string
+ */
+function getArgument(array $arguments, int $index, string $error, int $code): string
+{
+    if (!isset($arguments[$index])) {
+        error($error, $code);
+    }
+
+    return $arguments[$index];
+}
+
+/**
+ * @param string $error
+ * @param integer $code
+ * @return void
+ */
+function error(string $error, int $code)
+{
+    fwrite(STDERR, $error . PHP_EOL);
+
+    exit($code);
+}
+
+/**
+ * @param string $json
+ * @return array
+ */
+function jsonToArray(string $json): array
+{
+    $data = json_decode($json, true);
+
+    if (JSON_ERROR_NONE !== json_last_error()) {
+        error(sprintf('Invalid json: %s', json_last_error_msg()), 5);
+    }
+
+    return $data;
+}

@@ -1,0 +1,31 @@
+{
+    "name": "chubbyphp/chubbyphp-socket-server-mock",
+    "description": "Chubbyphp Socket Server Mock",
+    "keywords": ["chubbyphp", "slim", "socket", "server", "mock"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dominik Zogg",
+            "email": "dominik.zogg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "~7.0"
+    },
+    "require-dev": {
+        "chubbyphp/chubbyphp-mock": "^1.1",
+        "php-mock/php-mock-phpunit": "^2.1",
+        "phpunit/phpunit": "^6.5.8"
+    },
+    "autoload": {
+        "psr-4": { "Chubbyphp\\SocketServerMock\\": "src/" }
+    },
+    "bin": [
+        "bin/socketServerMock"
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
