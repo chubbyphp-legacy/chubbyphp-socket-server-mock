@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Chubbyphp\Tests\SocketServerMock;
 
+use Chubbyphp\Mock\Call;
 use Chubbyphp\Mock\MockByCallsTrait;
+use Chubbyphp\SocketServerMock\MessageInterface;
+use Chubbyphp\SocketServerMock\MessageLogInterface;
+use Chubbyphp\SocketServerMock\MessageLogsInterface;
 use Chubbyphp\SocketServerMock\SocketServerMock;
+use Chubbyphp\SocketServerMock\SocketServerMockException;
+use Chubbyphp\SocketServerMock\Stream\ConnectionInterface;
 use Chubbyphp\SocketServerMock\Stream\ServerFactoryInterface;
+use Chubbyphp\SocketServerMock\Stream\ServerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Chubbyphp\Mock\Call;
-use Chubbyphp\SocketServerMock\Stream\ServerInterface;
-use Chubbyphp\SocketServerMock\MessageLogsInterface;
-use Chubbyphp\SocketServerMock\MessageLogInterface;
-use Chubbyphp\SocketServerMock\Stream\ConnectionInterface;
-use Chubbyphp\SocketServerMock\MessageInterface;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\SocketServerMock
@@ -113,8 +114,8 @@ final class SocketServerMockTest extends TestCase
 
     public function testRunWithInvalidPlainInput()
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Given input is not part of expected input');
+        $this->expectException(SocketServerMockException::class);
+        $this->expectExceptionMessage('Given input "inu" is not part of input "input"');
 
         /** @var MessageInterface|MockObject $message */
         $message = $this->getMockByCalls(MessageInterface::class, [

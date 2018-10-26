@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "php": "~7.0"
+        "php": "~7.0",
+        "symfony/process": "~2.8|~3.0|~4.0"
     },
     "require-dev": {
         "chubbyphp/chubbyphp-mock": "^1.1",

@@ -15,6 +15,7 @@ A simple socket server mock.
 ## Requirements
 
  * php: ~7.0
+ * symfony/process: ~2.8|~3.0|~4.0
 
 ## Installation
 
@@ -31,53 +32,21 @@ composer require chubbyphp/chubbyphp-socket-server-mock "~1.0"
 
 namespace MyProject\Tests\Integration;
 
-use Symfony\Component\Process\Process;
+use Chubbyphp\SocketServerMock\CreateSocketServerMockTrait;
 use PHPUnit\Framework\TestCase;
 
 final class SampleTest extends TestCase
 {
+    use CreateSocketServerMockTrait;
+
     public function testSample()
     {
-        $this->createSocketServerMock(3000, [[[
+        $process = $this->createSocketServerMock('0.0.0.0', 3000, [[[
             'input' => 'input',
             'output' => 'output'
         ]]]);
 
         // run my integration test
-    }
-
-    /**
-     * @param int $port
-     * @param array $messageLogs
-     */
-    private function createSocketServerMock(int $port, array $messageLogs)
-    {
-        $process = new Process(sprintf(
-            'vendor/bin/socketServerMock 0.0.0.0 %d \'%s\'',
-            $port,
-            json_encode($messageLogs)
-        ));
-
-        $process->start();
-
-        $output = '';
-        while ($process->isRunning()) {
-            $output .= $process->getOutput();
-            if (false !== strpos($output, 'socket server mock: started')) {
-                break;
-            }
-
-            usleep(10000);
-        }
-
-        if ('' !== $errorOutput = $process->getErrorOutput()) {
-            throw new \LogicException(
-                sprintf(
-                    'Could not start the socker server mock: "%s"',
-                    $errorOutput
-                )
-            );
-        }
     }
 }
 ```

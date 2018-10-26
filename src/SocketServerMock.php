@@ -62,7 +62,7 @@ final class SocketServerMock
                 $givenInput .= $socketConnection->read(1);
 
                 if (0 !== strpos($input, $givenInput)) {
-                    throw new \InvalidArgumentException('Given input is not part of expected input');
+                    throw SocketServerMockException::createByInvalidInput($givenInput, $input);
                 }
 
                 if ($input === $givenInput) {
