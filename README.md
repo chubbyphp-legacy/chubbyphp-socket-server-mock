@@ -34,6 +34,7 @@ namespace MyProject\Tests\Integration;
 
 use Chubbyphp\SocketServerMock\CreateSocketServerMockTrait;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Process\Process;
 
 final class SampleTest extends TestCase
 {
@@ -41,6 +42,7 @@ final class SampleTest extends TestCase
 
     public function testSample()
     {
+        /** @var Process $process */
         $process = $this->createSocketServerMock('0.0.0.0', 3000, [[[
             'input' => 'input',
             'output' => 'output'
