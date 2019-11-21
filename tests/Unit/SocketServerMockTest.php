@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chubbyphp\Tests\SocketServerMock;
+namespace Chubbyphp\Tests\SocketServerMock\Unit;
 
 use Chubbyphp\Mock\Call;
 use Chubbyphp\Mock\MockByCallsTrait;
@@ -19,6 +19,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\SocketServerMock
+ *
+ * @internal
  */
 final class SocketServerMockTest extends TestCase
 {

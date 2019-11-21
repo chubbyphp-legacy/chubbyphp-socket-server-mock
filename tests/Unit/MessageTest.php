@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Chubbyphp\Tests\SocketServerMock;
+namespace Chubbyphp\Tests\SocketServerMock\Unit;
 
 use Chubbyphp\SocketServerMock\Message;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\Message
+ *
+ * @internal
  */
 final class MessageTest extends TestCase
 {

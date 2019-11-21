@@ -11,9 +11,6 @@ final class Connection implements ConnectionInterface
      */
     private $stream;
 
-    /**
-     * @param ServerInterface $socketServer
-     */
     public function __construct(ServerInterface $socketServer)
     {
         $stream = stream_socket_accept($socketServer());
@@ -30,19 +27,11 @@ final class Connection implements ConnectionInterface
         fclose($this->stream);
     }
 
-    /**
-     * @param int $length
-     *
-     * @return string
-     */
     public function read(int $length): string
     {
         return fread($this->stream, $length);
     }
 
-    /**
-     * @param string $string
-     */
     public function write(string $string)
     {
         fwrite($this->stream, $string);

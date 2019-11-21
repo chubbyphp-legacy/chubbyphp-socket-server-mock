@@ -6,13 +6,7 @@ namespace Chubbyphp\SocketServerMock;
 
 interface MessageInterface
 {
-    /**
-     * @return string
-     */
     public function getInput(): string;
 
-    /**
-     * @return string
-     */
     public function getOutput(): string;
 }

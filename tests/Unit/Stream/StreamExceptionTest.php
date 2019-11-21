@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Chubbyphp\Tests\SocketServerMock\Stream;
+namespace Chubbyphp\Tests\SocketServerMock\Unit\Stream;
 
-use PHPUnit\Framework\TestCase;
 use Chubbyphp\SocketServerMock\Stream\StreamException;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\Stream\StreamException
+ *
+ * @internal
  */
 final class StreamExceptionTest extends TestCase
 {

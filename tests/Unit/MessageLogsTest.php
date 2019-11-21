@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chubbyphp\Tests\SocketServerMock;
+namespace Chubbyphp\Tests\SocketServerMock\Unit;
 
 use Chubbyphp\SocketServerMock\MessageInterface;
 use Chubbyphp\SocketServerMock\MessageLogInterface;
@@ -11,6 +11,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\MessageLogs
+ *
+ * @internal
  */
 final class MessageLogsTest extends TestCase
 {

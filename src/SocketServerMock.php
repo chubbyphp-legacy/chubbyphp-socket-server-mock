@@ -15,19 +15,11 @@ final class SocketServerMock
      */
     private $serverFactory;
 
-    /**
-     * @param ServerFactoryInterface $serverFactory
-     */
     public function __construct(ServerFactoryInterface $serverFactory)
     {
         $this->serverFactory = $serverFactory;
     }
 
-    /**
-     * @param string               $host
-     * @param int                  $port
-     * @param MessageLogsInterface $messageLogs
-     */
     public function run(string $host, int $port, MessageLogsInterface $messageLogs)
     {
         $socketServer = $this->serverFactory->createByHostAndPort($host, $port);
@@ -35,10 +27,6 @@ final class SocketServerMock
         $this->processMessageLogs($socketServer, $messageLogs);
     }
 
-    /**
-     * @param ServerInterface      $socketServer
-     * @param MessageLogsInterface $messageLogs
-     */
     private function processMessageLogs(ServerInterface $socketServer, MessageLogsInterface $messageLogs)
     {
         while (null !== $messageLog = $messageLogs->getNextMessageLog()) {
@@ -48,10 +36,6 @@ final class SocketServerMock
         }
     }
 
-    /**
-     * @param ConnectionInterface $socketConnection
-     * @param MessageLogInterface $messageLog
-     */
     private function processMessageLog(ConnectionInterface $socketConnection, MessageLogInterface $messageLog)
     {
         while (null !== $message = $messageLog->getNextMessage()) {
@@ -74,11 +58,6 @@ final class SocketServerMock
         }
     }
 
-    /**
-     * @param string $value
-     *
-     * @return string
-     */
     private function getDecodedValue(string $value): string
     {
         if (0 === strpos($value, 'base64:')) {

@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Chubbyphp\Tests\SocketServerMock;
+namespace Chubbyphp\Tests\SocketServerMock\Unit;
 
-use PHPUnit\Framework\TestCase;
 use Chubbyphp\SocketServerMock\SocketServerMockException;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\SocketServerMockException
+ *
+ * @internal
  */
 final class SocketServerMockExceptionTest extends TestCase
 {

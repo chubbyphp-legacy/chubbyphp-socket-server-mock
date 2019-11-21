@@ -1,8 +1,7 @@
 # chubbyphp-socket-server-mock
 
 [![Build Status](https://api.travis-ci.org/chubbyphp/chubbyphp-socket-server-mock.png?branch=master)](https://travis-ci.org/chubbyphp/chubbyphp-socket-server-mock)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-socket-server-mock/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-socket-server-mock/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-socket-server-mock/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-socket-server-mock/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/chubbyphp/chubbyphp-socket-server-mock/badge.svg?branch=master)](https://coveralls.io/github/chubbyphp/chubbyphp-socket-server-mock?branch=master)
 [![Total Downloads](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/downloads.png)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
 [![Monthly Downloads](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/d/monthly)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
 [![Latest Stable Version](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/v/stable.png)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
@@ -14,15 +13,15 @@ A simple socket server mock.
 
 ## Requirements
 
- * php: ~7.0
- * symfony/process: ~2.8|~3.0|~4.0
+ * php: ^7.0
+ * symfony/process: ^2.8|^3.4|^4.2|^5.0
 
 ## Installation
 
 Through [Composer](http://getcomposer.org) as [chubbyphp/chubbyphp-socket-server-mock][1].
 
 ```sh
-composer require chubbyphp/chubbyphp-socket-server-mock "~1.0"
+composer require chubbyphp/chubbyphp-socket-server-mock "^1.1"
 ```
 
 ## Usage

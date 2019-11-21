@@ -22,11 +22,6 @@ final class MessageLogs implements MessageLogsInterface
         }
     }
 
-    /**
-     * @param array $data
-     *
-     * @return self
-     */
     public static function createFromArray(array $data): self
     {
         $messageLogs = [];
@@ -39,18 +34,15 @@ final class MessageLogs implements MessageLogsInterface
     }
 
     /**
-     * @param MessageLogInterface $connection
-     */
-    private function addMessageLog(MessageLogInterface $connection)
-    {
-        $this->messageLogs[] = $connection;
-    }
-
-    /**
      * @return MessageLogInterface|null
      */
     public function getNextMessageLog()
     {
         return array_shift($this->messageLogs);
+    }
+
+    private function addMessageLog(MessageLogInterface $connection)
+    {
+        $this->messageLogs[] = $connection;
     }
 }

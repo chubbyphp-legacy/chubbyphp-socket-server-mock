@@ -22,11 +22,6 @@ final class MessageLog implements MessageLogInterface
         }
     }
 
-    /**
-     * @param array $data
-     *
-     * @return self
-     */
     public static function createFromArray(array $data): self
     {
         $messages = [];
@@ -39,18 +34,15 @@ final class MessageLog implements MessageLogInterface
     }
 
     /**
-     * @param MessageInterface $message
-     */
-    private function addMessage(MessageInterface $message)
-    {
-        $this->messages[] = $message;
-    }
-
-    /**
      * @return MessageInterface|null
      */
     public function getNextMessage()
     {
         return array_shift($this->messages);
+    }
+
+    private function addMessage(MessageInterface $message)
+    {
+        $this->messages[] = $message;
     }
 }

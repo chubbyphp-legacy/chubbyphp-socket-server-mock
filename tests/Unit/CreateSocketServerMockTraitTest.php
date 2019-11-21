@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chubbyphp\Tests\SocketServerMock;
+namespace Chubbyphp\Tests\SocketServerMock\Unit;
 
 use Chubbyphp\SocketServerMock\CreateSocketServerMockTrait;
 use PHPUnit\Framework\TestCase;
@@ -10,8 +10,10 @@ use Symfony\Component\Process\Process;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\CreateSocketServerMockTrait
+ *
+ * @internal
  */
-final class SocketServerMockIntegrationTest extends TestCase
+final class CreateSocketServerMockTraitTest extends TestCase
 {
     use CreateSocketServerMockTrait;
 
@@ -53,7 +55,7 @@ final class SocketServerMockIntegrationTest extends TestCase
 
     public function testMissingHost()
     {
-        $executable = realpath(__DIR__.'/../bin/socketServerMock');
+        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
 
         $process = new Process($executable);
         $process->start();
@@ -65,7 +67,7 @@ final class SocketServerMockIntegrationTest extends TestCase
 
     public function testMissingPort()
     {
-        $executable = realpath(__DIR__.'/../bin/socketServerMock');
+        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
 
         $process = new Process(sprintf('%s 0.0.0.0', $executable));
         $process->start();
@@ -77,7 +79,7 @@ final class SocketServerMockIntegrationTest extends TestCase
 
     public function testMissingMessageLogs()
     {
-        $executable = realpath(__DIR__.'/../bin/socketServerMock');
+        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
 
         $process = new Process(sprintf('%s 0.0.0.0 63000', $executable));
         $process->start();
@@ -89,7 +91,7 @@ final class SocketServerMockIntegrationTest extends TestCase
 
     public function testWithStringAsPort()
     {
-        $executable = realpath(__DIR__.'/../bin/socketServerMock');
+        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
 
         $process = new Process(sprintf('%s 0.0.0.0 test [[{"input":"input","output":"output"}]]', $executable));
         $process->start();
@@ -101,7 +103,7 @@ final class SocketServerMockIntegrationTest extends TestCase
 
     public function testWithInvalidMessageLogsJson()
     {
-        $executable = realpath(__DIR__.'/../bin/socketServerMock');
+        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
 
         $process = new Process(sprintf('%s 0.0.0.0 63000 json', $executable));
         $process->start();

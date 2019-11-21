@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chubbyphp\Tests\SocketServerMock\Stream;
+namespace Chubbyphp\Tests\SocketServerMock\Unit\Stream;
 
 use Chubbyphp\Mock\Call;
 use Chubbyphp\Mock\MockByCallsTrait;
@@ -14,6 +14,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Chubbyphp\SocketServerMock\Stream\Connection
+ *
+ * @internal
  */
 final class ConnectionTest extends TestCase
 {

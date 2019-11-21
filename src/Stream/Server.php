@@ -11,10 +11,6 @@ final class Server implements ServerInterface
      */
     private $stream;
 
-    /**
-     * @param string $host
-     * @param int    $port
-     */
     public function __construct(string $host, int $port)
     {
         $code = 0;
@@ -31,14 +27,6 @@ final class Server implements ServerInterface
         fwrite(STDOUT, 'socket server mock: started'.PHP_EOL);
     }
 
-    /**
-     * @return ConnectionInterface
-     */
-    public function createConnection(): ConnectionInterface
-    {
-        return new Connection($this);
-    }
-
     public function __deconstruct()
     {
         fclose($this->stream);
@@ -50,5 +38,10 @@ final class Server implements ServerInterface
     public function __invoke()
     {
         return $this->stream;
+    }
+
+    public function createConnection(): ConnectionInterface
+    {
+        return new Connection($this);
     }
 }

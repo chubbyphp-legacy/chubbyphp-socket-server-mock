@@ -8,13 +8,6 @@ use Symfony\Component\Process\Process;
 
 trait CreateSocketServerMockTrait
 {
-    /**
-     * @param string $host
-     * @param int    $port
-     * @param array  $messageLogs
-     *
-     * @return Process
-     */
     private function createSocketServerMock(string $host, int $port, array $messageLogs): Process
     {
         $process = new Process(sprintf(

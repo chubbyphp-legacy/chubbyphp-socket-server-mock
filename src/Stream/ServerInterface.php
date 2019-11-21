@@ -7,12 +7,9 @@ namespace Chubbyphp\SocketServerMock\Stream;
 interface ServerInterface
 {
     /**
-     * @return ConnectionInterface
-     */
-    public function createConnection(): ConnectionInterface;
-
-    /**
      * @return resource
      */
     public function __invoke();
+
+    public function createConnection(): ConnectionInterface;
 }

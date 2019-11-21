@@ -16,21 +16,12 @@ final class Message implements MessageInterface
      */
     private $output;
 
-    /**
-     * @param string $input
-     * @param string $output
-     */
     public function __construct(string $input, string $output)
     {
         $this->input = $input;
         $this->output = $output;
     }
 
-    /**
-     * @param array $data
-     *
-     * @return self
-     */
     public static function createFromArray(array $data): self
     {
         $missingFields = [];
@@ -51,17 +42,11 @@ final class Message implements MessageInterface
         return new self((string) $data['input'], (string) $data['output']);
     }
 
-    /**
-     * @return string
-     */
     public function getInput(): string
     {
         return $this->input;
     }
 
-    /**
-     * @return string
-     */
     public function getOutput(): string
     {
         return $this->output;
