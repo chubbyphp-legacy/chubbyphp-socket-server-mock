@@ -10,13 +10,12 @@ trait CreateSocketServerMockTrait
 {
     private function createSocketServerMock(string $host, int $port, array $messageLogs): Process
     {
-        $process = new Process(sprintf(
-            '%s %s %d \'%s\'',
+        $process = new Process([
             realpath(__DIR__.'/../bin/socketServerMock'),
             $host,
             $port,
-            json_encode($messageLogs)
-        ));
+            json_encode($messageLogs),
+        ]);
 
         $process->start();
 

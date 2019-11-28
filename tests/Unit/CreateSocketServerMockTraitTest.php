@@ -55,9 +55,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
 
     public function testMissingHost()
     {
-        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
-
-        $process = new Process($executable);
+        $process = new Process([realpath(__DIR__.'/../../bin/socketServerMock')]);
         $process->start();
         $process->wait();
 
@@ -67,9 +65,10 @@ final class CreateSocketServerMockTraitTest extends TestCase
 
     public function testMissingPort()
     {
-        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
-
-        $process = new Process(sprintf('%s 0.0.0.0', $executable));
+        $process = new Process([
+            realpath(__DIR__.'/../../bin/socketServerMock'),
+            '0.0.0.0',
+        ]);
         $process->start();
         $process->wait();
 
@@ -79,9 +78,11 @@ final class CreateSocketServerMockTraitTest extends TestCase
 
     public function testMissingMessageLogs()
     {
-        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
-
-        $process = new Process(sprintf('%s 0.0.0.0 63000', $executable));
+        $process = new Process([
+            realpath(__DIR__.'/../../bin/socketServerMock'),
+            '0.0.0.0',
+            63000,
+        ]);
         $process->start();
         $process->wait();
 
@@ -91,9 +92,12 @@ final class CreateSocketServerMockTraitTest extends TestCase
 
     public function testWithStringAsPort()
     {
-        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
-
-        $process = new Process(sprintf('%s 0.0.0.0 test [[{"input":"input","output":"output"}]]', $executable));
+        $process = new Process([
+            realpath(__DIR__.'/../../bin/socketServerMock'),
+            '0.0.0.0',
+            'test',
+            '[[{"input":"input","output":"output"}]]',
+        ]);
         $process->start();
         $process->wait();
 
@@ -103,9 +107,12 @@ final class CreateSocketServerMockTraitTest extends TestCase
 
     public function testWithInvalidMessageLogsJson()
     {
-        $executable = realpath(__DIR__.'/../../bin/socketServerMock');
-
-        $process = new Process(sprintf('%s 0.0.0.0 63000 json', $executable));
+        $process = new Process([
+            realpath(__DIR__.'/../../bin/socketServerMock'),
+            '0.0.0.0',
+            '63000',
+            'json',
+        ]);
         $process->start();
         $process->wait();
 
