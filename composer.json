@@ -15,9 +15,9 @@
     },
     "require-dev": {
         "chubbyphp/chubbyphp-mock": "^1.4.2",
-        "friendsofphp/php-cs-fixer": "^2.16",
+        "friendsofphp/php-cs-fixer": "^2.16.1",
         "php-coveralls/php-coveralls": "^2.1",
-        "php-mock/php-mock-phpunit": "^2.1",
+        "php-mock/php-mock-phpunit": "^2.2",
         "phploc/phploc": "^4.0.1||^5.0",
         "phpunit/phpunit": "^6.5.14|^7.5.17|^8.4.3"
     },
