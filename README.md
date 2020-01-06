@@ -14,7 +14,7 @@ A simple socket server mock.
 ## Requirements
 
  * php: ^7.0
- * symfony/process: ^2.8|^3.4|^4.2|^5.0
+ * symfony/process: ^2.8.50|^3.4.26|^4.2.7|^5.0
 
 ## Installation
 
