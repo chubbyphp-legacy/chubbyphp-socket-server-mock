@@ -2,10 +2,10 @@
 
 [![Build Status](https://api.travis-ci.org/chubbyphp/chubbyphp-socket-server-mock.png?branch=master)](https://travis-ci.org/chubbyphp/chubbyphp-socket-server-mock)
 [![Coverage Status](https://coveralls.io/repos/github/chubbyphp/chubbyphp-socket-server-mock/badge.svg?branch=master)](https://coveralls.io/github/chubbyphp/chubbyphp-socket-server-mock?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/v/stable.png)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
 [![Total Downloads](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/downloads.png)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
 [![Monthly Downloads](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/d/monthly)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
-[![Latest Stable Version](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/v/stable.png)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
-[![Latest Unstable Version](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/v/unstable)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
+[![Daily Downloads](https://poser.pugx.org/chubbyphp/chubbyphp-socket-server-mock/d/daily)](https://packagist.org/packages/chubbyphp/chubbyphp-socket-server-mock)
 
 ## Description
 
