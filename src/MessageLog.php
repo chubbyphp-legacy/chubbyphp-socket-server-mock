@@ -22,6 +22,9 @@ final class MessageLog implements MessageLogInterface
         }
     }
 
+    /**
+     * @param array<int, array<string, string>> $data
+     */
     public static function createFromArray(array $data): self
     {
         $messages = [];
@@ -41,7 +44,7 @@ final class MessageLog implements MessageLogInterface
         return array_shift($this->messages);
     }
 
-    private function addMessage(MessageInterface $message)
+    private function addMessage(MessageInterface $message): void
     {
         $this->messages[] = $message;
     }

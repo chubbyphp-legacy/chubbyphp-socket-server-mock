@@ -27,7 +27,7 @@ final class Server implements ServerInterface
         fwrite(STDOUT, 'socket server mock: started'.PHP_EOL);
     }
 
-    public function __deconstruct()
+    public function __deconstruct(): void
     {
         fclose($this->stream);
     }

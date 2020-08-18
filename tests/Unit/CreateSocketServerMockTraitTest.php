@@ -17,7 +17,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
 {
     use CreateSocketServerMockTrait;
 
-    public function testWithExpectedInput()
+    public function testWithExpectedInput(): void
     {
         $process = $this->createSocketServerMock('0.0.0.0', 62000, [[['input' => 'input', 'output' => 'output']]]);
 
@@ -37,7 +37,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
         self::assertSame(0, $process->getExitCode());
     }
 
-    public function testWithUnexpectedInput()
+    public function testWithUnexpectedInput(): void
     {
         $process = $this->createSocketServerMock('0.0.0.0', 62000, [[['input' => 'input', 'output' => 'output']]]);
 
@@ -53,7 +53,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
         self::assertSame(200, $process->getExitCode());
     }
 
-    public function testMissingHost()
+    public function testMissingHost(): void
     {
         $process = new Process([realpath(__DIR__.'/../../bin/socketServerMock')]);
         $process->start();
@@ -63,7 +63,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
         self::assertSame('Missing host'.PHP_EOL, $process->getErrorOutput());
     }
 
-    public function testMissingPort()
+    public function testMissingPort(): void
     {
         $process = new Process([
             realpath(__DIR__.'/../../bin/socketServerMock'),
@@ -76,7 +76,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
         self::assertSame('Missing port'.PHP_EOL, $process->getErrorOutput());
     }
 
-    public function testMissingMessageLogs()
+    public function testMissingMessageLogs(): void
     {
         $process = new Process([
             realpath(__DIR__.'/../../bin/socketServerMock'),
@@ -90,7 +90,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
         self::assertSame('Missing message logs'.PHP_EOL, $process->getErrorOutput());
     }
 
-    public function testWithStringAsPort()
+    public function testWithStringAsPort(): void
     {
         $process = new Process([
             realpath(__DIR__.'/../../bin/socketServerMock'),
@@ -105,7 +105,7 @@ final class CreateSocketServerMockTraitTest extends TestCase
         self::assertSame('Port "test" is not an integer'.PHP_EOL, $process->getErrorOutput());
     }
 
-    public function testWithInvalidMessageLogsJson()
+    public function testWithInvalidMessageLogsJson(): void
     {
         $process = new Process([
             realpath(__DIR__.'/../../bin/socketServerMock'),

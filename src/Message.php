@@ -22,10 +22,12 @@ final class Message implements MessageInterface
         $this->output = $output;
     }
 
+    /**
+     * @param array<string, string> $data
+     */
     public static function createFromArray(array $data): self
     {
         $missingFields = [];
-        $invalidFields = [];
 
         if (!isset($data['input'])) {
             $missingFields[] = 'input';

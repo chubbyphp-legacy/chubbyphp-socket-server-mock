@@ -8,5 +8,5 @@ interface ConnectionInterface
 {
     public function read(int $length): string;
 
-    public function write(string $string);
+    public function write(string $string): void;
 }

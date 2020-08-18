@@ -26,7 +26,7 @@ final class SocketServerMockTest extends TestCase
 {
     use MockByCallsTrait;
 
-    public function testRunWithPlainInput()
+    public function testRunWithPlainInput(): void
     {
         /** @var MessageInterface|MockObject $message */
         $message = $this->getMockByCalls(MessageInterface::class, [
@@ -70,7 +70,7 @@ final class SocketServerMockTest extends TestCase
         $socketServerMock->run('0.0.0.0', 3000, $messageLogs);
     }
 
-    public function testRunWithEncodedInput()
+    public function testRunWithEncodedInput(): void
     {
         /** @var MessageInterface|MockObject $message */
         $message = $this->getMockByCalls(MessageInterface::class, [
@@ -114,7 +114,7 @@ final class SocketServerMockTest extends TestCase
         $socketServerMock->run('0.0.0.0', 3000, $messageLogs);
     }
 
-    public function testRunWithInvalidPlainInput()
+    public function testRunWithInvalidPlainInput(): void
     {
         $this->expectException(SocketServerMockException::class);
         $this->expectExceptionMessage('Given input "inu" is not part of input "input"');

@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class MessageTest extends TestCase
 {
-    public function testMessageWithValidArguments()
+    public function testMessageWithValidArguments(): void
     {
         $message = Message::createFromArray(['input' => 'input', 'output' => 'output']);
 
@@ -22,7 +22,7 @@ final class MessageTest extends TestCase
         self::assertSame('output', $message->getOutput());
     }
 
-    public function testMessageWithInvalidArguments()
+    public function testMessageWithInvalidArguments(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Missing keys in array: "input","output"');

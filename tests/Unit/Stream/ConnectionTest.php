@@ -22,7 +22,7 @@ final class ConnectionTest extends TestCase
     use PHPMock;
     use MockByCallsTrait;
 
-    public function testSuccessfulConstruct()
+    public function testSuccessfulConstruct(): void
     {
         $serverResource = new \stdClass();
         $connectionResource = new \stdClass();
@@ -40,7 +40,7 @@ final class ConnectionTest extends TestCase
         new Connection($server);
     }
 
-    public function testFailedConstruct()
+    public function testFailedConstruct(): void
     {
         $this->expectException(StreamException::class);
         $this->expectExceptionMessage('Stream socket could not accept a connection');
@@ -61,7 +61,7 @@ final class ConnectionTest extends TestCase
         new Connection($server);
     }
 
-    public function testDeconstruct()
+    public function testDeconstruct(): void
     {
         $serverResource = new \stdClass();
         $connectionResource = new \stdClass();
@@ -83,7 +83,7 @@ final class ConnectionTest extends TestCase
         $connection->__deconstruct();
     }
 
-    public function testRead()
+    public function testRead(): void
     {
         $serverResource = new \stdClass();
         $connectionResource = new \stdClass();
@@ -106,7 +106,7 @@ final class ConnectionTest extends TestCase
         self::assertSame('test', $connection->read(1234));
     }
 
-    public function testWrite()
+    public function testWrite(): void
     {
         $serverResource = new \stdClass();
         $connectionResource = new \stdClass();

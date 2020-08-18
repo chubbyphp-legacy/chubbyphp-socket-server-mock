@@ -20,14 +20,14 @@ final class SocketServerMock
         $this->serverFactory = $serverFactory;
     }
 
-    public function run(string $host, int $port, MessageLogsInterface $messageLogs)
+    public function run(string $host, int $port, MessageLogsInterface $messageLogs): void
     {
         $socketServer = $this->serverFactory->createByHostAndPort($host, $port);
 
         $this->processMessageLogs($socketServer, $messageLogs);
     }
 
-    private function processMessageLogs(ServerInterface $socketServer, MessageLogsInterface $messageLogs)
+    private function processMessageLogs(ServerInterface $socketServer, MessageLogsInterface $messageLogs): void
     {
         while (null !== $messageLog = $messageLogs->getNextMessageLog()) {
             $socketConnection = $socketServer->createConnection();
@@ -36,7 +36,7 @@ final class SocketServerMock
         }
     }
 
-    private function processMessageLog(ConnectionInterface $socketConnection, MessageLogInterface $messageLog)
+    private function processMessageLog(ConnectionInterface $socketConnection, MessageLogInterface $messageLog): void
     {
         while (null !== $message = $messageLog->getNextMessage()) {
             $input = $this->getDecodedValue($message->getInput());

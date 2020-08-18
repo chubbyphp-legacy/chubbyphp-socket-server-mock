@@ -22,17 +22,17 @@ final class Connection implements ConnectionInterface
         $this->stream = $stream;
     }
 
-    public function __deconstruct()
+    public function __deconstruct(): void
     {
         fclose($this->stream);
     }
 
     public function read(int $length): string
     {
-        return fread($this->stream, $length);
+        return (string) fread($this->stream, $length);
     }
 
-    public function write(string $string)
+    public function write(string $string): void
     {
         fwrite($this->stream, $string);
     }

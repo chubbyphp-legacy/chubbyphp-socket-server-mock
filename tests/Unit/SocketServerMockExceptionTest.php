@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class SocketServerMockExceptionTest extends TestCase
 {
-    public function testCreateFromStreamServerError()
+    public function testCreateFromStreamServerError(): void
     {
         $exception = SocketServerMockException::createByInvalidInput('inu', 'input');
 

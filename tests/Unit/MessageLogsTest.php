@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class MessageLogsTest extends TestCase
 {
-    public function testMessageLogs()
+    public function testMessageLogs(): void
     {
         $messageLogs = MessageLogs::createFromArray([[['input' => 'input', 'output' => 'output']]]);
 

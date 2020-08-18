@@ -19,7 +19,7 @@ final class ServerTest extends TestCase
 {
     use PHPMock;
 
-    public function testSuccessfulConstruct()
+    public function testSuccessfulConstruct(): void
     {
         $serverResource = new \stdClass();
 
@@ -35,7 +35,7 @@ final class ServerTest extends TestCase
         new Server('0.0.0.0', 3000);
     }
 
-    public function testFailedConstruct()
+    public function testFailedConstruct(): void
     {
         $this->expectException(StreamException::class);
         $this->expectExceptionMessage('Server could not listen to host: "0.0.0.0", port: 3000, detail: ""');
@@ -51,7 +51,7 @@ final class ServerTest extends TestCase
         new Server('0.0.0.0', 3000);
     }
 
-    public function testCreateConnection()
+    public function testCreateConnection(): void
     {
         $serverResource = new \stdClass();
         $connectionResource = new \stdClass();
@@ -74,7 +74,7 @@ final class ServerTest extends TestCase
         self::assertInstanceOf(ConnectionInterface::class, $server->createConnection());
     }
 
-    public function testDestruct()
+    public function testDestruct(): void
     {
         $serverResource = new \stdClass();
 
@@ -94,7 +94,7 @@ final class ServerTest extends TestCase
         $server->__deconstruct();
     }
 
-    public function testInvoke()
+    public function testInvoke(): void
     {
         $serverResource = new \stdClass();
 

@@ -18,7 +18,7 @@ final class ServerFactoryTest extends TestCase
 {
     use PHPMock;
 
-    public function testCreateByHostAndPort()
+    public function testCreateByHostAndPort(): void
     {
         $serverResource = new \stdClass();
 

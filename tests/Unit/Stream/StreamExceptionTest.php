@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class StreamExceptionTest extends TestCase
 {
-    public function testCreateFromStreamServerError()
+    public function testCreateFromStreamServerError(): void
     {
         $exception = StreamException::createFromStreamServerError('0.0.0.0', 3000, 'some error');
 
@@ -26,7 +26,7 @@ final class StreamExceptionTest extends TestCase
         self::assertSame(100, $exception->getCode());
     }
 
-    public function testCreateFromStreamAcceptError()
+    public function testCreateFromStreamAcceptError(): void
     {
         $exception = StreamException::createFromStreamAcceptError();
 

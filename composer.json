@@ -10,16 +10,21 @@
         }
     ],
     "require": {
-        "php": "^7.0",
-        "symfony/process": "^2.8.50|^3.4.26|^4.2.7|^5.0"
+        "php": "^7.2",
+        "symfony/process": "^3.4.43|^4.4.11|^5.0"
     },
     "require-dev": {
-        "chubbyphp/chubbyphp-mock": "^1.4.2",
-        "friendsofphp/php-cs-fixer": "^2.16.1",
+        "chubbyphp/chubbyphp-dev-helper": "dev-master",
+        "chubbyphp/chubbyphp-mock": "^1.4.5",
+        "infection/infection": "^0.15.3|^0.16.4",
+        "laminas/laminas-container-config-test": "^0.2 || ^1.0",
+        "mavimo/phpstan-junit": "^0.3",
         "php-coveralls/php-coveralls": "^2.2",
-        "php-mock/php-mock-phpunit": "^2.2",
-        "phploc/phploc": "^4.0.1||^5.0",
-        "phpunit/phpunit": "^6.5.14|^7.5.17|^8.5.1"
+        "php-mock/php-mock-phpunit": "^2.6",
+        "phploc/phploc": "^5.0|^6.0.2",
+        "phpstan/extension-installer": "^1.0.4",
+        "phpstan/phpstan": "^0.12.33",
+        "phpunit/phpunit": "^8.5.8|^9.2.6"
     },
     "autoload": {
         "psr-4": { "Chubbyphp\\SocketServerMock\\": "src/" }
@@ -32,7 +37,7 @@
     ],
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1-dev"
+            "dev-master": "1.2-dev"
         }
     },
     "scripts": {
@@ -41,13 +46,19 @@
             "@test:lint",
             "@test:unit",
             "@test:integration",
+            "@test:infection",
+            "@test:static-analysis",
             "@test:loc",
-            "@test:cs"
+            "@test:cs",
+            "@test:insights"
         ],
         "test:cs": "mkdir -p build && vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --cache-file=build/phpcs.cache",
-        "test:integration": "vendor/bin/phpunit --testsuite=Integration",
+        "test:infection": "vendor/bin/infection --threads=$(nproc) --min-msi=85 --verbose --coverage=build/phpunit",
+        "test:insights": "mkdir -p build && bash -c 'vendor/bin/phpinsights analyse -v --no-interaction --min-quality=96 --disable-security-check | tee build/phpinsights.log; if [ ${PIPESTATUS[0]} -ne \"0\" ]; then exit 1; fi'",
+        "test:integration": "vendor/bin/phpunit --testsuite=Integration --cache-result-file=build/phpunit/result.cache",
         "test:lint": "mkdir -p build && find src tests -name '*.php' -print0 | xargs -0 -n1 -P$(nproc) php -l | tee build/phplint.log",
         "test:loc": "mkdir -p build && vendor/bin/phploc src --verbose | tee build/phploc.log",
-        "test:unit": "phpdbg -qrr vendor/bin/phpunit --testsuite=Unit --coverage-text --coverage-clover=build/phpunit/clover.xml --coverage-html=build/phpunit/coverage-html --coverage-xml=build/phpunit/coverage-xml --log-junit=build/phpunit/junit.xml"
+        "test:static-analysis": "mkdir -p build && bash -c 'vendor/bin/phpstan analyse src --no-progress --level=7 --error-format=junit | tee build/phpstan.junit.xml; if [ ${PIPESTATUS[0]} -ne \"0\" ]; then exit 1; fi'",
+        "test:unit": "vendor/bin/phpunit --testsuite=Unit --coverage-text --coverage-clover=build/phpunit/clover.xml --coverage-html=build/phpunit/coverage-html --coverage-xml=build/phpunit/coverage-xml --log-junit=build/phpunit/junit.xml --cache-result-file=build/phpunit/result.cache"
     }
 }

@@ -13,15 +13,15 @@ A simple socket server mock.
 
 ## Requirements
 
- * php: ^7.0
- * symfony/process: ^2.8.50|^3.4.26|^4.2.7|^5.0
+ * php: ^7.2
+ * symfony/process: ^3.4.43|^4.4.11|^5.0
 
 ## Installation
 
 Through [Composer](http://getcomposer.org) as [chubbyphp/chubbyphp-socket-server-mock][1].
 
 ```sh
-composer require chubbyphp/chubbyphp-socket-server-mock "^1.1"
+composer require chubbyphp/chubbyphp-socket-server-mock "^1.2"
 ```
 
 ## Usage

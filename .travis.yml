@@ -1,13 +1,9 @@
+dist: bionic
+
 language: php
 
 matrix:
   include:
-    - php: 7.0
-      env: composerargs="--prefer-lowest"
-    - php: 7.0
-    - php: 7.1
-      env: composerargs="--prefer-lowest"
-    - php: 7.1
     - php: 7.2
       env: composerargs="--prefer-lowest"
     - php: 7.2
@@ -20,11 +16,11 @@ matrix:
     - php: nightly
       env: composerargs="--ignore-platform-reqs"
   allow_failures:
-    - php: 7.4
-      env: composerargs="--prefer-lowest"
     - php: nightly
 
 before_script:
+  - (phpenv config-rm xdebug.ini || exit 0)
+  - pecl install pcov
   - echo 'Europe/Zurich' | sudo tee /etc/timezone
   - echo 'date.timezone = "Europe/Zurich"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - composer self-update -q
